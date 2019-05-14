@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -32,16 +33,8 @@
 				</form>
 			</div>
 		</div>
-		<div id="navigation">
-			<ul>
-				<li><a href="">안대혁</a></li>
-				<li><a href="">방명록</a></li>
-				<li><a href="">게시판</a></li>
-			</ul>
-		</div>
-		<div id="footer">
-			<p>(c)opyright 2015, 2016, 2017, 2018</p>
-		</div>
+		<jsp:include page="/WEB-INF/views/includes/navigation.jsp"></jsp:include> <!-- 파일을 생성해두고 불러와서 적용 -->
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp" />
 	</div>
 </body>
 </html>
