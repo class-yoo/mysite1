@@ -18,7 +18,6 @@ public class GuestbookServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8"); // 필터로 등록해두면 신경안써도됨
 		
 		
 		String actionName = request.getParameter("a");

@@ -4,7 +4,7 @@
 	<ul>
 	
 		<li><a href="<%=request.getContextPath()%>/">안대혁</a></li>
-		<li><a href="<%=request.getContextPath()%>/">방명록</a></li>
-		<li><a href="<%=request.getContextPath()%>/guestbook">게시판</a></li>
+		<li><a href="<%=request.getContextPath()%>/guestbook">방명록</a></li>
+		<li><a href="<%=request.getContextPath()%>/">게시판</a></li>
 	</ul>
 </div>

@@ -16,13 +16,12 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setCharacterEncoding("utf-8"); // 필터로 등록해두면 신경안써도됨
-		
+//		request.setCharacterEncoding("utf-8"); // 필터로 등록해두면 신경안써도됨 - web.xml에 필터를 등록하고 Filter 클래스를 만들어 사용함
 		
 		String actionName = request.getParameter("a");
 		Action action = new UserActionFactory().getAction(actionName);
 		action.execute(request, response);
-
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

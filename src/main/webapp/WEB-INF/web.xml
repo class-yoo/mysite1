@@ -12,6 +12,25 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+
+	<!-- encoding Filter -->
+	<filter>
+		<display-name>EncodingFilter</display-name>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>com.cafe24.web.filter.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value> <!-- 인코딩 형식 설정 -->
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern> <!-- 모든 요청이 필터를 거치게 설정해둠 -->
+	</filter-mapping>
+
+	
+	<!-- Servlet:URL 매핑 -->
 	<servlet>
 		<servlet-name>MainServlet</servlet-name>
 		<servlet-class>com.cafe24.mysite.controller.MainServlet</servlet-class>
@@ -20,6 +39,7 @@
 		<servlet-name>MainServlet</servlet-name>
 		<url-pattern></url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<description></description>
 		<display-name>GuestbookServlet</display-name>
@@ -30,6 +50,7 @@
 		<servlet-name>GuestbookServlet</servlet-name>
 		<url-pattern>/guestbook</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<description></description>
 		<display-name>UserServlet</display-name>
@@ -40,4 +61,16 @@
 		<servlet-name>UserServlet</servlet-name>
 		<url-pattern>/user</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>LifeCycleServlet</display-name>
+		<servlet-name>LifeCycleServlet</servlet-name>
+		<servlet-class>com.cafe24.mysite.controller.LifeCycleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LifeCycleServlet</servlet-name>
+		<url-pattern>/lifecycle</url-pattern>
+	</servlet-mapping>
+
 </web-app>

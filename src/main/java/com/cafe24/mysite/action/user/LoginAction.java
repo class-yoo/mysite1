@@ -5,31 +5,32 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.cafe24.mysite.dao.UserDao;
 import com.cafe24.mysite.vo.UserVo;
 import com.cafe24.web.WebUtil;
 import com.cafe24.web.mvc.Action;
 
-public class JoinAction implements Action {
+public class LoginAction implements Action {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String gender = request.getParameter("gender");
 		
-		UserVo vo = new UserVo();
-		vo.setName(name);
-		vo.setEmail(email);
-		vo.setPassword(password);
-		vo.setGender(gender);
+		UserVo authUser = new UserDao().get(email, password);
+		if(authUser==null) { //로그인 정보가 틀릴때
+			request.setAttribute("result", "fail");
+			WebUtil.forward(request, response, "/WEB-INF/views/user/loginform.jsp");
+			return; 
+		}
 		
-		new UserDao().insertUser(vo);
+		HttpSession session = request.getSession(true); // 없으면 만들어서 반환해라 - 새로 접속한 클라이언트일때		
+		session.setAttribute("authUser", authUser);
 		
-		WebUtil.redirect(request, response, request.getContextPath()+"/user?a=joinSuccess");
+		WebUtil.redirect(request, response, request.getContextPath());
+		
 	}
 
-	
 }

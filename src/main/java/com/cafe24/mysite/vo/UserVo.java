@@ -1,7 +1,7 @@
 package com.cafe24.mysite.vo;
 
 public class UserVo {
-
+	
 	private Long no;
 	private String name;
 	private String email;
@@ -12,7 +12,7 @@ public class UserVo {
 	public Long getNo() {
 		return no;
 	}
-
+	
 	public void setNo(Long no) {
 		this.no = no;
 	}

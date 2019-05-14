@@ -20,7 +20,7 @@ public class DeleteAction implements Action {
 		GuestbookVo vo = new GuestbookVo();
 		vo.setNo(Long.parseLong(no));
 		vo.setPassword(password);
-
+		
 		new GuestbookDao().deleteGuestbook(vo);
 		
 		WebUtil.redirect(request, response, request.getContextPath()+"/guestbook");
