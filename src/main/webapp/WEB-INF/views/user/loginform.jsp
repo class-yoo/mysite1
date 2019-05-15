@@ -22,14 +22,11 @@
 					<input id="email" name="email" type="text" value=""> 
 					<label class="block-label">패스워드</label>
 					<input name="password" type="password" value="">
-					<%	
-						String result = (String)request.getAttribute("result");
-						if("fail".equals(result)){
-					%>
-					<p>로그인이 실패 했습니다.</p>
-					<%
-					}
-					%>
+					<c:choose>
+						<c:when test='${param.result == "fail"}'>
+							<p>로그인이 실패 했습니다.</p>
+						</c:when>
+					</c:choose>
 					<input type="submit" value="로그인">
 				</form>
 			</div>
