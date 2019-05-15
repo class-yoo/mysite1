@@ -7,7 +7,10 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 
+@WebFilter(value="/*", initParams=@WebInitParam(name="encoding",value ="utf-8"))
 public class EncodingFilter implements Filter {
 
 	private String encoding;
@@ -16,10 +19,8 @@ public class EncodingFilter implements Filter {
 		System.out.println("Encoding Filter initialized");
 		encoding =fConfig.getInitParameter("encoding"); //web.xml에 설정한 Encoding 값을 가져온다.
 		if(encoding ==null) {
-			
 			encoding = "utf-8";
 		}
-			
 		
 	}
 	

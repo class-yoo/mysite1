@@ -16,5 +16,4 @@ public class JoinSuccessAction implements Action {
 		WebUtil.forward(request, response, "WEB-INF/views/user/joinsuccess.jsp");
 		
 	}
-
 }
