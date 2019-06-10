@@ -20,7 +20,7 @@ public class UserDao {
 		System.out.println("실행");
 		try {
 			conn = getConnection();
-			String sql = "insert" + " into user" + " values(null, ?, ?, ?, ?, now())";
+			String sql = "insert" + " into member" + " values(default, ?, ?, ?, ?, now())";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, userVo.getName());
@@ -28,8 +28,8 @@ public class UserDao {
 			pstmt.setString(3, userVo.getPassword());
 			pstmt.setString(4, userVo.getGender());
 
-			rs = pstmt.executeQuery();
-
+			rs = pstmt.executeQuery();	
+			
 		} catch (SQLException e) {
 			System.out.println("error: " + e);
 		} finally {
@@ -60,7 +60,7 @@ public class UserDao {
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			String sql = "select no, name" + " from user" + " where email = ? and password = ?";
+			String sql = "select no, name" + " from member" + " where email = ? and password = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setString(2, password);
@@ -106,7 +106,7 @@ public class UserDao {
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			String sql = "select name, email, gender" + " from user" + " where no = ?";
+			String sql = "select name, email, gender" + " from member" + " where no = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, no);
 			
@@ -155,7 +155,7 @@ public class UserDao {
 			System.out.println("실행");
 			try {
 				conn = getConnection();
-				String sql = "update user"
+				String sql = "update member"
 						+ " set name= ?, password= ?, gender= ?"
 						+ " where no= ?";
 				pstmt = conn.prepareStatement(sql);
@@ -188,19 +188,31 @@ public class UserDao {
 			return result;
 	}
 	
-	
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://192.168.1.221:3307/webdb";
+			Class.forName("org.postgresql.Driver");
+			String url = "jdbc:postgresql://192.168.1.221:5432/webdb";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
-
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
 		}
 		return conn;
 	}
+	
+//	private Connection getConnection() throws SQLException {
+//		Connection conn = null;
+//		try {
+//			Class.forName("org.mariadb.jdbc.Driver");
+//			String url = "jdbc:mariadb://192.168.1.221:3307/webdb";
+//			conn = DriverManager.getConnection(url, "webdb", "webdb");
+//
+//		} catch (ClassNotFoundException e) {
+//			System.out.println("드라이버 로딩 실패:" + e);
+//		}
+//		return conn;
+//	}
 
 	
 
